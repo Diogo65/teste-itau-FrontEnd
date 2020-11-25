@@ -15,9 +15,11 @@
                     {{ professor.nome }}
                 </a>
               </div>
-              <button type="button" class="btn btn-danger action btn-sm" style="float: right;" (click)="excluirProfessor(professor.id)">
-                <i class="far fa-trash-alt"></i>
-              </button>
+              <div class="group-btn">
+                <button type="button" class="btn btn-danger action btn-sm" style="float: right;" (click)="excluirProfessor(professor.id)">
+                  <i class="far fa-trash-alt"></i>
+                </button>
+              </div>
             </div>
           </div>
       </div>
@@ -33,12 +35,28 @@
     </button>
   </div>
   <div class="modal-body">
+    <div class="addMateriaProfessor">
+      <form>
+        <div class="form-row align-items-center">
+          <div class="col-auto my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Adicionar nova matéria para o professor(a)</label>
+            <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" (click)='keyUpMateriaSelecionada($event)'>
+              <option value="0">--Selecione--</option>
+              <option *ngFor="let opt of materiasList" value= {{opt.id}}  >{{opt.nome}}</option>
+            </select>
+          </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary" (click)="CadastrarProfessorMateria()">Adicionar</button>
+          </div>
+        </div>
+      </form>
+    </div>
     <ul class="list-group list-group-flush" *ngFor="let materia of materias">
       <li class="list-group-item">{{ materia.materia.nome }}</li>
     </ul>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
   </div>
 </ng-template>
 
@@ -60,7 +78,42 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
   </div>
 </ng-template>
 
+<ng-template #register let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Adiocionar novo professor </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body" id="bodymodalregister">
+    <form>
+      <div class="form-group">
+        <label for="nomeInput">Nome</label>
+        <input class="form-control" type="text" placeholder="Digite o Nome" id="nomeInput" (keyup)='keyUp($event)'>
+      </div>
+      <button type="button" class="btn btn-primary" style="float: right;" (click)="CadastrarProfessor()">Cadastrar</button>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
+</ng-template>
+
+<ng-template #alert let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Falha ao cadastrar </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-alert">
+    <h6 style="color:red">Essa matéria já é lecionada por esse professor</h6>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Fechar</button>
+  </div>
+</ng-template>

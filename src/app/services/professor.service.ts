@@ -26,6 +26,10 @@ export class ProfessorService {
     return this.http.post(`${this.UrlServiceV1}Professor`, {Nome: nome})
   };
 
+  cadastrarProfessorMateria(professorId: number, materiaId: number) {
+    return this.http.post(`${this.UrlServiceV1}ProfessorMateria`, {ProfessorId: professorId, MateriaId: materiaId})
+  };
+
   excluirProfessor(id: number) {
     return this.http.post(`${this.UrlServiceV1}Professor/excluir`, {Id: id})
   };

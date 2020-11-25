@@ -6,8 +6,6 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './pages/navegacao/menu/menu.component';
 import { HomeComponent } from './pages/navegacao/home/home.component';
 import { FooterComponent } from './pages/navegacao/footer/footer.component';
-import { ProfessorComponent } from './pages/professor/professor.component';
-import { MateriaComponent } from './pages/materia/materia.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { ProfessorService } from './services/professor.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -23,8 +21,6 @@ import { FormsModule } from '@angular/forms';
     MenuComponent,
     HomeComponent,
     FooterComponent,
-    ProfessorComponent,
-    MateriaComponent,
     ListaMateriaComponent,
     ListaProfessorComponent,
   ],
