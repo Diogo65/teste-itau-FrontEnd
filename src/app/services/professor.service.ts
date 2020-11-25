@@ -22,4 +22,11 @@ export class ProfessorService {
     .get<ProfessorResponse[]>(this.UrlServiceV1 + "ProfessorMateria/materia/" + id); 
   }
 
+  cadastrarProfessor(nome: string) {
+    return this.http.post(`${this.UrlServiceV1}Professor`, {Nome: nome})
+  };
+
+  excluirProfessor(id: number) {
+    return this.http.post(`${this.UrlServiceV1}Professor/excluir`, {Id: id})
+  };
 }

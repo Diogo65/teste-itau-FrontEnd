@@ -13,37 +13,49 @@ import { MateriaService } from 'src/app/services/materia.service';
 export class ListaProfessorComponent implements OnInit {
 
   materias: MateriaResponse[] | undefined;
-
+  public professores: Professor[] | undefined;
+  public nome : string = "";
+  
   constructor(
     private professorService: ProfessorService,
     private materiaService: MateriaService,
     private modalService: NgbModal,
     ) { } //Injetar o serviço
 
-  public professores: Professor[] | undefined;
 
   ngOnInit() {
-
-    this.professorService.obterProfessores()
-      .subscribe( 
-        professores => {
-          this.professores = professores;
-        },
-        error => console.log(error)
-      );
+    this.ListarProfessores();
   }
-
-  // open(content:any) {
-  //   this.modalService.open(content, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // }
 
   open(content:any, id: number) {
     this.ListarMateriasProfessor(id);
     this.modalService.open(content, { size: 'lg' });
+  }
+
+  openRegister(register:any) {
+    this.modalService.open(register, { size: 'lg' });
+  }
+
+  CadastrarProfessor() {
+    this.professorService.cadastrarProfessor(this.nome)
+      .subscribe(data => {
+        console.log("Cadastrado");
+        this.ListarProfessores();
+        this.modalService.dismissAll();
+      },
+      error => console.log(error)
+      );
+  }
+
+  ListarProfessores(){
+    this.professorService.obterProfessores()
+    .subscribe( 
+      professores => {
+        this.professores = professores;
+      
+      },
+      error => console.log(error)
+    );
   }
 
   ListarMateriasProfessor(id: number) {
@@ -53,5 +65,20 @@ export class ListaProfessorComponent implements OnInit {
       },
       error => console.log(error)
       );
+  }
+
+  excluirProfessor(id: number) {
+    this.professorService.excluirProfessor(id)
+      .subscribe(data => {
+        console.log("Excluido");
+        this.ListarProfessores();
+      },
+      error => console.log(error)
+      );
+  }
+
+  
+  keyUp(event: any){
+    this.nome = event.target.value;
   }
 }

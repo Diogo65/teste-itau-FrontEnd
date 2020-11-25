@@ -22,4 +22,12 @@ export class MateriaService {
     return this.http
     .get<MateriaResponse[]>(this.UrlServiceV1 + "ProfessorMateria/professor/" + id); 
   }
+
+  cadastrarMateria(nome: string) {
+    return this.http.post(`${this.UrlServiceV1}Materia`, {Nome: nome})
+  };
+
+  excluirMateria(id: number) {
+    return this.http.post(`${this.UrlServiceV1}Materia/excluir`, {Id: id})
+  };
 }

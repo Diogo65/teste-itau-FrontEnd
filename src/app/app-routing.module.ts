@@ -8,7 +8,7 @@ import { ProfessorComponent } from './pages/professor/professor.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/professor', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'professor', component: ListaProfessorComponent },
   { path: 'materia', component: ListaMateriaComponent },

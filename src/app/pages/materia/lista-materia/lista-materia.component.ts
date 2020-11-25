@@ -12,18 +12,43 @@ import { ProfessorService } from 'src/app/services/professor.service';
 })
 export class ListaMateriaComponent implements OnInit {
 
+  public nome : string = "";
   professores: ProfessorResponse[] | undefined;
 
   constructor(
     private professorService: ProfessorService,
     private materiaService: MateriaService,
     private modalService: NgbModal,
+    
     ) { } //Injetar o serviço
 
   public materias: Materia[] | undefined;
 
   ngOnInit() {
+    this.ListarMaterias();
+  }
 
+  open(content:any, id: number) {
+    this.ListarProfessorMateria(id);
+    this.modalService.open(content, { size: 'lg' });
+  }
+
+  openRegisterMateria(registerMateria:any) {
+    this.modalService.open(registerMateria, { size: 'lg' });
+  }
+
+  CadastrarMateria() {
+    this.materiaService.cadastrarMateria(this.nome)
+      .subscribe(data => {
+        console.log("Cadastrado");
+        this.ListarMaterias();
+        this.modalService.dismissAll();
+      },
+      error => console.log(error)
+      );
+  }
+
+  ListarMaterias(){
     this.materiaService.obterMaterias()
       .subscribe( 
         materias => {
@@ -33,19 +58,6 @@ export class ListaMateriaComponent implements OnInit {
       );
   }
 
-  // open(content:any) {
-  //   this.modalService.open(content, {size: 'lg', ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-  //     this.closeResult = `Closed with: ${result}`;
-  //   }, (reason) => {
-  //     this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-  //   });
-  // }
-
-  open(content:any, id: number) {
-    this.ListarProfessorMateria(id);
-    this.modalService.open(content, { size: 'lg' });
-  }
-
   ListarProfessorMateria(id: number) {
     this.professorService.obterProfessoresMateria(id)
       .subscribe(items => {
@@ -53,5 +65,19 @@ export class ListaMateriaComponent implements OnInit {
       },
       error => console.log(error)
       );
+  }
+
+  excluirMateria(id: number) {
+    this.materiaService.excluirMateria(id)
+      .subscribe(data => {
+        console.log("Excluido");
+        this.ListarMaterias();
+      },
+      error => console.log(error)
+      );
+  }
+
+  keyUp(event: any){
+    this.nome = event.target.value;
   }
 }

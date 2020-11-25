@@ -10,10 +10,12 @@ import { ProfessorComponent } from './pages/professor/professor.component';
 import { MateriaComponent } from './pages/materia/materia.component';
 import { APP_BASE_HREF } from '@angular/common';
 import { ProfessorService } from './services/professor.service';
-import { ListaProfessorComponent } from './pages/professor/lista-professor/lista-professor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ListaMateriaComponent } from './pages/materia/lista-materia/lista-materia.component';
+import { ListaProfessorComponent } from './pages/professor/lista-professor/lista-professor.component';
+import { MateriaService } from './services/materia.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,18 +25,19 @@ import { ListaMateriaComponent } from './pages/materia/lista-materia/lista-mater
     FooterComponent,
     ProfessorComponent,
     MateriaComponent,
+    ListaMateriaComponent,
     ListaProfessorComponent,
-    ListaProfessorComponent,
-    ListaMateriaComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     HttpClientModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [
     ProfessorService,
+    MateriaService,
     {provide: APP_BASE_HREF, useValue: '/'}
   ],
   bootstrap: [AppComponent]
