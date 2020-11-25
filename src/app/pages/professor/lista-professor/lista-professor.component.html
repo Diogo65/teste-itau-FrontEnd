@@ -1,0 +1,102 @@
+<div class="container main-container">
+
+  <!-- <div class="row text-center"> -->
+          <!-- Card -->
+      <!-- <div *ngFor="let professor of professores" class="col-md-3" style="padding-bottom: 30px;">
+          <div class="card h-100">
+              <a class="text-decoration-none" [routerLink]="['/professor-detalhe', professor.id]">
+                  <div style="align-content: center;"> -->
+                      <!-- <img src="/assets/images/{{ produto.imagem }}" height="164px" width="253px" alt=""> -->
+                      <!-- <img src="/assets/images/teacher.png" height="164px" width="210px" alt="">
+
+                  </div>
+              </a>
+              <h4 class="card-title">{{ professor.nome | titlecase }}</h4> -->
+
+              <!-- <div [ngSwitch]="produto.promocao">
+                  <p *ngSwitchCase="true">Promoção!</p>
+                  <p *ngSwitchCase="false">Por Apenas:</p>
+              </div>
+              
+              <div *ngIf="produto.promocao" class="card-body">
+                  <div><h4 class="card-text">De: -->
+                      <!-- Tag small deixa a letra menor, e <del> p/ riscar a letra -->
+                      <!-- <small><del>{{ produto.valor | currency:'BRL':'symbol':'1.2-2':'pt' }}</del></small>
+                      Por: {{ produto.valorPromo | currency:'BRL':'symbol':'1.2-2':'pt' }}
+              </h4></div>
+              </div>
+
+              <div *ngIf="!produto.promocao" class="card-body">
+                  <div><h4>{{ produto.valor | currency:'BRL':'symbol':'1.2-2':'pt' }}</h4></div>
+              </div>
+          -->
+              <!-- <div class="card-footer">
+                  <a class="btn btn-primary">
+                      <span class="fa fa-shopping-cart">Detalhes</span>
+                  </a>
+              </div> 
+          </div>
+      </div>
+  </div>
+</div> -->
+
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let professor of professores">
+            <td>{{ professor.id }}</td>
+            <td>{{ professor.nome }}</td>
+            <td>
+              <button type="button" class="btn btn-primary action"><i class="far fa-eye"></i></button>
+              <button type="button" class="btn btn-success action"><i class="fas fa-edit"></i></button>
+              <button type="button" class="btn btn-danger action"><i class="far fa-trash-alt"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div> -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="list-group" >
+          <div *ngFor="let professor of professores">
+
+              <a class="list-group-item list-group-item-action" (click)="open(content, professor.id)">
+                  {{ professor.nome }}
+              </a>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Matérias do(a) professor(a) </h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul class="list-group list-group-flush" *ngFor="let materia of materias">
+      <li class="list-group-item">{{ materia.materia.nome }}</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+  </div>
+</ng-template>
+
+

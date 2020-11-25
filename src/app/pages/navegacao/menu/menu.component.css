@@ -1,0 +1,9 @@
+nav.navbar.navbar-expand-lg.navbar-dark.fixed-top {
+    background-color: #fd7e14;
+    height: 7% ;
+}
+
+a.nav-link{
+    color: #fff !important;
+    font-weight: bolder !important;
+}
