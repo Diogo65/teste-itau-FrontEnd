@@ -1,9 +1,19 @@
-nav.navbar.navbar-expand-lg.navbar-dark.fixed-top {
-    background-color: #fd7e14;
+nav.navbar.navbar-expand-lg.navbar-light.bg-light.menu {
+    background-color: #fd7e14 !important;
     height: 7% ;
 }
 
 a.nav-link{
     color: #fff !important;
     font-weight: bolder !important;
+}
+
+a.navbar-brand {
+    color: #fff !important;
+    font-weight: bolder !important;
+    text-shadow: 0.1em 0.1em 0.1em rgb(119, 114, 114);
+}
+
+a.nav-link {
+    font-size: 18px;
 }

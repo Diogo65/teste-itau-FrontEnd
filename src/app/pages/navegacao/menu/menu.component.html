@@ -1,18 +1,18 @@
 <!-- Navigation -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top menu">
-    <a class="navbar-brand" [routerLink]="['/home']">Projeto Banco Itaú</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+<nav class="navbar navbar-expand-lg navbar-light bg-light menu">
+  <a class="navbar-brand" href="#">Projeto Banco Itaú</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/professor']">Professores</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/materia']">Materias</a>
-        </li>
+          <li class="nav-item active">
+            <a class="nav-link" [routerLink]="['/professor']">Professores</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/materia']">Materias</a>
+          </li>
       </ul>
-    </div>
-  </nav>
+  </div>
+</nav>
 <!-- Fim Navigation -->
